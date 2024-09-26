@@ -2,10 +2,12 @@ import Link from 'next/link'
 import Image from 'next/image'
 import MeskaLogo from '/src/images/meska_logo_white.webp'
 
-
 import { IconLink } from '@/components/IconLink'
 import { Logo } from '@/components/Logo'
 import { SignUpForm } from '@/components/SignUpForm'
+
+
+
 
 function BookIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -53,17 +55,17 @@ export function Intro() {
       <div>
         <Link href="/">
         <h1 className="mt-14 font-display text-4xl/tight font-light text-white">
-        <Image src={MeskaLogo} width={"200"} height={"200"} alt={''}>  
+        <Image src={MeskaLogo} width={"700"} height={"200"} alt={''}>  
         </Image>
         </h1>
           {/* <Logo className="inline-block h-8 w-auto" /> */}
         </Link>
       </div>
       <h1 className="mt-14 font-display text-6xl/tight font-bold text-white">
-        {'MESKA'}
+        {''}
       </h1>
-      <h1 className="text-sky-300 text-2xl">
-        IT Technology Support
+      <h1 className="text-sky-300 text-2xl text-center">
+        IT Support & Technology Consulting
       </h1>
       {/* <p className="mt-4 text-sm/6 text-gray-300">
         Commit is a lightweight Git client you can open from anywhere any time
@@ -71,12 +73,12 @@ export function Intro() {
         fast, beautiful, and completely unnecessary.
       </p> */}
       {/* <SignUpForm /> */}
-      <div className="mt-8 flex flex-wrap justify-center gap-x-1 gap-y-3 sm:gap-x-2 lg:justify-start">
-        <IconLink href="#" icon={BookIcon} className="flex-none">
+      <div className="mt-8 flex flex-wrap justify-center gap-x-1 gap-y-3 sm:gap-x-2 lg:justify-center">
+        {/* <IconLink href="#" icon={BookIcon} className="flex-none">
           (305) 401-2031
-        </IconLink>
+        </IconLink> */}
         <IconLink href="#" icon={GitHubIcon} className="flex-none">
-          meskasupport@gmail.com
+          meskaIT@proton.me
         </IconLink>
        
       </div>
@@ -87,10 +89,12 @@ export function Intro() {
 export function IntroFooter() {
   return (
     <p className="flex items-baseline gap-x-2 text-[0.8125rem]/6 text-gray-500">
-      Brought to you by{' '}
-      <IconLink href="#" icon={XIcon} compact>
+      MESKA IT 2024. Miami Based. {' '}
+      {/* <IconLink href="#" icon={XIcon} compact>
         Brand
-      </IconLink>
+      </IconLink> */}
+      
     </p>
   )
+  
 }

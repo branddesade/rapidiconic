@@ -130,3 +130,12 @@ export const code = function Code({
 
   return <code {...props} />
 }
+
+const stats = [
+  { id: 1, name: 'Creators on the platform', value: '8,000+' },
+  { id: 2, name: 'Flat platform fee', value: '3%' },
+  { id: 3, name: 'Uptime guarantee', value: '99.9%' },
+  { id: 4, name: 'Paid out to creators', value: '$70M' },
+]
+
+

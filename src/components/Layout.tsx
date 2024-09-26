@@ -65,7 +65,11 @@ function Glow() {
       <div className="absolute inset-x-0 bottom-0 right-0 h-px bg-white mix-blend-overlay lg:left-auto lg:top-0 lg:h-auto lg:w-px" />
     </div>
   )
+
+  
 }
+
+
 
 function FixedSidebar({
   main,
@@ -108,3 +112,5 @@ export function Layout({ children }: { children: React.ReactNode }) {
     </>
   )
 }
+
+
