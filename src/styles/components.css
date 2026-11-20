@@ -1,6 +1,3 @@
-@import './typography.css';
-@tailwind components;
-
 /* FAQ Accordion: native <details> with progressive-enhancement slide animation */
 .meska-accordion summary {
   list-style: none;

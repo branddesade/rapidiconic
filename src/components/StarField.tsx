@@ -2,7 +2,6 @@
 
 import { useEffect, useId, useRef } from 'react'
 import clsx from 'clsx'
-import { type TimelineSegment, animate, timeline } from 'motion'
 
 type Star = [x: number, y: number, dim?: boolean, blur?: boolean]
 
@@ -67,44 +66,56 @@ const constellations: Array<Array<Star>> = [
   ],
 ]
 
-function Star({
+function StarPoint({
   blurId,
   point: [cx, cy, dim, blur],
 }: {
   blurId: string
   point: Star
 }) {
-  let groupRef = useRef<React.ElementRef<'g'>>(null)
-  let ref = useRef<React.ElementRef<'circle'>>(null)
+  const groupRef = useRef<SVGGElement>(null)
+  const ref = useRef<SVGCircleElement>(null)
 
   useEffect(() => {
-    if (!groupRef.current || !ref.current) {
+    const group = groupRef.current
+    const circle = ref.current
+    if (!group || !circle) return
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reducedMotion) {
+      group.style.opacity = '1'
       return
     }
 
-    let delay = Math.random() * 2
+    const delay = Math.random() * 2000
+    const fadeAnim = group.animate([{ opacity: 0 }, { opacity: 1 }], {
+      duration: 4000,
+      delay,
+      fill: 'forwards',
+    })
 
-    let animations = [
-      animate(groupRef.current, { opacity: 1 }, { duration: 4, delay }),
-      animate(
-        ref.current,
-        {
-          opacity: dim ? [0.2, 0.5] : [1, 0.6],
-          scale: dim ? [1, 1.2] : [1.2, 1],
-        },
-        {
-          delay,
-          duration: Math.random() * 2 + 2,
-          direction: 'alternate',
-          repeat: Infinity,
-        },
-      ),
-    ]
+    const twinkleAnim = circle.animate(
+      dim
+        ? [
+            { opacity: 0.2, transform: 'scale(1)' },
+            { opacity: 0.5, transform: 'scale(1.2)' },
+          ]
+        : [
+            { opacity: 1, transform: 'scale(1.2)' },
+            { opacity: 0.6, transform: 'scale(1)' },
+          ],
+      {
+        delay,
+        duration: (Math.random() * 2 + 2) * 1000,
+        direction: 'alternate',
+        iterations: Infinity,
+        easing: 'ease-in-out',
+      },
+    )
 
     return () => {
-      for (let animation of animations) {
-        animation.cancel()
-      }
+      fadeAnim.cancel()
+      twinkleAnim.cancel()
     }
   }, [dim])
 
@@ -133,38 +144,45 @@ function Constellation({
   points: Array<Star>
   blurId: string
 }) {
-  let ref = useRef<React.ElementRef<'path'>>(null)
-  let uniquePoints = points.filter(
+  const ref = useRef<SVGPathElement>(null)
+  const uniquePoints = points.filter(
     (point, pointIndex) =>
       points.findIndex((p) => String(p) === String(point)) === pointIndex,
   )
-  let isFilled = uniquePoints.length !== points.length
+  const isFilled = uniquePoints.length !== points.length
 
   useEffect(() => {
-    if (!ref.current) {
+    const path = ref.current
+    if (!path) return
+
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (reducedMotion) {
+      path.style.visibility = 'visible'
+      path.style.strokeDashoffset = '0'
+      if (isFilled) path.style.fill = 'rgb(255 255 255 / 0.02)'
       return
     }
 
-    let sequence: Array<TimelineSegment> = [
+    const delay = (Math.random() * 3 + 2) * 1000
+    const drawAnim = path.animate(
       [
-        ref.current,
+        { strokeDashoffset: 1, visibility: 'visible' },
         { strokeDashoffset: 0, visibility: 'visible' },
-        { duration: 5, delay: Math.random() * 3 + 2 },
       ],
-    ]
+      { duration: 5000, delay, fill: 'forwards', easing: 'ease-out' },
+    )
 
+    let fillAnim: Animation | undefined
     if (isFilled) {
-      sequence.push([
-        ref.current,
-        { fill: 'rgb(255 255 255 / 0.02)' },
-        { duration: 1 },
-      ])
+      fillAnim = path.animate(
+        [{ fill: 'transparent' }, { fill: 'rgb(255 255 255 / 0.02)' }],
+        { duration: 1000, delay: delay + 5000, fill: 'forwards' },
+      )
     }
 
-    let animation = timeline(sequence)
-
     return () => {
-      animation.cancel()
+      drawAnim.cancel()
+      fillAnim?.cancel()
     }
   }, [isFilled])
 
@@ -182,14 +200,14 @@ function Constellation({
         className="invisible"
       />
       {uniquePoints.map((point, pointIndex) => (
-        <Star key={pointIndex} point={point} blurId={blurId} />
+        <StarPoint key={pointIndex} point={point} blurId={blurId} />
       ))}
     </>
   )
 }
 
 export function StarField({ className }: { className?: string }) {
-  let blurId = useId()
+  const blurId = useId()
 
   return (
     <svg
@@ -214,7 +232,7 @@ export function StarField({ className }: { className?: string }) {
         />
       ))}
       {stars.map((point, pointIndex) => (
-        <Star key={pointIndex} point={point} blurId={blurId} />
+        <StarPoint key={pointIndex} point={point} blurId={blurId} />
       ))}
     </svg>
   )
