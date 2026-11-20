@@ -1,2 +1,69 @@
 @import './typography.css';
 @tailwind components;
+
+/* FAQ Accordion: native <details> with progressive-enhancement slide animation */
+.meska-accordion summary {
+  list-style: none;
+  cursor: pointer;
+}
+
+.meska-accordion summary::-webkit-details-marker {
+  display: none;
+}
+
+.meska-accordion summary .faq-chevron {
+  transition: transform 0.2s ease;
+}
+
+.meska-accordion details[open] > summary .faq-chevron {
+  transform: rotate(180deg);
+}
+
+.meska-accordion details::details-content {
+  interpolate-size: allow-keywords;
+  overflow: clip;
+  contain: layout;
+}
+
+.meska-accordion details:not([open])::details-content {
+  block-size: 0;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .meska-accordion details::details-content {
+    transition: block-size, content-visibility, display;
+    transition-duration: 0.28s;
+    transition-timing-function: ease-in-out;
+    transition-behavior: allow-discrete;
+  }
+}
+
+/* Contact form validation after user interaction (:user-invalid / :user-valid) */
+.meska-field .error-msg {
+  display: none;
+}
+
+.meska-field :is(input, select, textarea):is(:user-invalid, .user-invalid-fallback) {
+  border-color: rgb(248 113 113 / 0.8);
+  background-color: rgb(127 29 29 / 0.18);
+}
+
+.meska-field :is(input, select, textarea):is(:user-invalid, .user-invalid-fallback) + .error-msg {
+  display: flex;
+}
+
+.meska-field :is(input, select, textarea):user-valid {
+  border-color: rgb(56 189 248 / 0.6);
+}
+
+.visually-hidden:where(:not(:focus-within, :active)) {
+  position: absolute !important;
+  clip-path: inset(50%) !important;
+  overflow: hidden !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  padding: 0 !important;
+  border: 0 !important;
+  white-space: nowrap !important;
+}

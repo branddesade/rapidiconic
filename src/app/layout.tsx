@@ -20,15 +20,17 @@ const monaSans = localFont({
   weight: '200 900',
 })
 
+const meskaDisplay = localFont({
+  src: '../fonts/MeskaDisplay-Regular.woff2',
+  display: 'swap',
+  variable: '--font-meska',
+  weight: '400',
+})
+
 export const metadata: Metadata = {
-  title: 'Meska IT',
+  title: 'Meska IT — IT Support, Managed Cloud & AI Workflow Automation',
   description:
-    'Miami Based IT Consulting. Your personal IT support on the fly.',
-  alternates: {
-    types: {
-      'application/rss+xml': `${process.env.NEXT_PUBLIC_SITE_URL}/feed.xml`,
-    },
-  },
+    'Miami-based IT consulting and AI automation studio. Fast remote support, managed Microsoft 365 & Google Workspace, and practical AI workflows for modern businesses.',
 }
 
 export default function RootLayout({
@@ -39,10 +41,15 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={clsx('h-full antialiased', inter.variable, monaSans.variable)}
+      className={clsx(
+        'dark h-full scroll-smooth antialiased',
+        inter.variable,
+        monaSans.variable,
+        meskaDisplay.variable,
+      )}
       suppressHydrationWarning
     >
-      <body className="flex min-h-full flex-col bg-white dark:bg-gray-950">
+      <body className="flex min-h-full flex-col bg-gray-950 text-gray-100">
         <Providers>{children}</Providers>
       </body>
     </html>

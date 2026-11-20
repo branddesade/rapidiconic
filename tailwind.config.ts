@@ -11,6 +11,7 @@ export default {
       fontFamily: {
         sans: 'var(--font-inter)',
         display: 'var(--font-mona-sans)',
+        meska: 'var(--font-meska)',
       },
       opacity: {
         2.5: '0.025',
