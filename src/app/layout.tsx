@@ -28,9 +28,9 @@ const meskaDisplay = localFont({
 })
 
 export const metadata: Metadata = {
-  title: 'Meska IT — IT Support, Managed Cloud & AI Workflow Automation',
+  title: 'Meska IT — Miami AI Workflow Automation Studio',
   description:
-    'Miami-based IT consulting and AI automation studio. Fast remote support, managed Microsoft 365 & Google Workspace, and practical AI workflows for modern businesses.',
+    'Miami-based AI workflow automation studio for 5–50 person businesses. Fixed-price bilingual lead agents, invoice & PDF autopilot, and private company copilots deployed in 7 days on your own infrastructure.',
 }
 
 export default function RootLayout({

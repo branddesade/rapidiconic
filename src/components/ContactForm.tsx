@@ -4,12 +4,21 @@ import { useEffect, useRef, useState } from 'react'
 
 export function ContactForm() {
   const formRef = useRef<HTMLFormElement>(null)
+  const announcerRef = useRef<HTMLDivElement>(null)
   const [submitted, setSubmitted] = useState(false)
   const [copied, setCopied] = useState(false)
 
   useEffect(() => {
     const form = formRef.current
+    const announcer = announcerRef.current
     if (!form) return
+
+    let announceTimer: ReturnType<typeof setTimeout> | undefined
+    let resetTimer: ReturnType<typeof setTimeout> | undefined
+    let announcedField: HTMLElement | null = null
+
+    const flagged = new WeakSet<Element>()
+    const announced = new WeakSet<Element>()
 
     const linkError = (el: HTMLElement, shown: boolean) => {
       const errorId = el.dataset.error
@@ -22,40 +31,104 @@ export function ContactForm() {
       else el.removeAttribute('aria-describedby')
     }
 
-    const syncAria = (el: EventTarget | null) => {
-      if (!(el instanceof HTMLInputElement || el instanceof HTMLSelectElement || el instanceof HTMLTextAreaElement)) {
+    const spokenText = (node: HTMLElement) => {
+      const copy = node.cloneNode(true) as HTMLElement
+      copy.querySelectorAll('[aria-hidden="true"]').forEach((n) => n.remove())
+      copy.querySelectorAll('[role="img"][aria-label]').forEach((n) => {
+        n.replaceWith(`${n.getAttribute('aria-label')}: `)
+      })
+      return (copy.textContent || '').replace(/\s+/g, ' ').trim()
+    }
+
+    const announceError = (
+      el: HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement,
+    ) => {
+      const errorId = el.dataset.error
+      if (!errorId || !announcer) return
+      const error = document.getElementById(errorId)
+      if (!error) return
+      const labelEl = el.labels?.[0]
+      const label = labelEl ? `${spokenText(labelEl)}: ` : ''
+      if (announceTimer) clearTimeout(announceTimer)
+      announcer.textContent = ''
+      announcedField = el
+      announceTimer = setTimeout(() => {
+        announcer.textContent = label + spokenText(error)
+      }, 500)
+    }
+
+    const syncAria = (el: EventTarget | null, announce = false) => {
+      if (
+        !(
+          el instanceof HTMLInputElement ||
+          el instanceof HTMLSelectElement ||
+          el instanceof HTMLTextAreaElement
+        )
+      ) {
         return
       }
       const isInvalid = el.matches(':user-invalid')
       if (isInvalid) {
+        if (announce && !announced.has(el)) {
+          announceError(el)
+          announced.add(el)
+        }
         el.setAttribute('aria-invalid', 'true')
         linkError(el, true)
-      } else {
+        flagged.add(el)
+      } else if (flagged.has(el) || el.getAttribute('aria-invalid') !== 'true') {
         el.setAttribute('aria-invalid', 'false')
         linkError(el, false)
+        flagged.delete(el)
+        announced.delete(el)
+        if (announcedField === el) {
+          if (announceTimer) clearTimeout(announceTimer)
+          if (announcer) announcer.textContent = ''
+          announcedField = null
+        }
       }
     }
 
     form
       .querySelectorAll('input, select, textarea')
-      .forEach((el) => el.setAttribute('aria-invalid', 'false'))
+      .forEach((el) => syncAria(el))
 
-    const onBlur = (e: FocusEvent) => syncAria(e.target)
+    const onBlur = (e: FocusEvent) => syncAria(e.target, true)
     const onInput = (e: Event) => {
       if (e.target instanceof HTMLElement && e.target.hasAttribute('aria-invalid')) {
         syncAria(e.target)
       }
     }
-    const onInvalid = (e: Event) => syncAria(e.target)
+    const onChange = (e: Event) => syncAria(e.target, true)
+    const onInvalid = (e: Event) => {
+      if (e.target instanceof Element) {
+        announced.add(e.target)
+      }
+      syncAria(e.target)
+    }
+    const onReset = (e: Event) => {
+      const targetForm = e.target
+      if (!(targetForm instanceof HTMLFormElement)) return
+      if (resetTimer) clearTimeout(resetTimer)
+      resetTimer = setTimeout(() => {
+        Array.from(targetForm.elements).forEach((el) => syncAria(el))
+      })
+    }
 
     form.addEventListener('blur', onBlur, true)
     form.addEventListener('input', onInput)
+    form.addEventListener('change', onChange, true)
     form.addEventListener('invalid', onInvalid, true)
+    form.addEventListener('reset', onReset, true)
 
     return () => {
+      if (announceTimer) clearTimeout(announceTimer)
+      if (resetTimer) clearTimeout(resetTimer)
       form.removeEventListener('blur', onBlur, true)
       form.removeEventListener('input', onInput)
+      form.removeEventListener('change', onChange, true)
       form.removeEventListener('invalid', onInvalid, true)
+      form.removeEventListener('reset', onReset, true)
     }
   }, [])
 
@@ -74,9 +147,9 @@ export function ContactForm() {
     const service = String(data.get('service') || '').trim()
     const message = String(data.get('message') || '').trim()
 
-    const subject = encodeURIComponent(`[Meska IT] ${service} — ${name}`)
+    const subject = encodeURIComponent(`[Meska AI] ${service} — ${name}`)
     const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nService: ${service}\n\nDetails:\n${message}`,
+      `Name: ${name}\nEmail: ${email}\nAutomation: ${service}\n\nWorkflow Details:\n${message}`,
     )
 
     window.location.href = `mailto:hello@meskait.com?subject=${subject}&body=${body}`
@@ -98,7 +171,7 @@ export function ContactForm() {
       <div className="mb-6 flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-5">
         <div>
           <p className="text-xs font-semibold uppercase tracking-widest text-sky-400">
-            Direct Inbox
+            Direct Miami Studio Inbox
           </p>
           <a
             href="mailto:hello@meskait.com"
@@ -115,6 +188,8 @@ export function ContactForm() {
           {copied ? 'Copied!' : 'Copy email'}
         </button>
       </div>
+
+      <div ref={announcerRef} aria-live="polite" className="visually-hidden" />
 
       <form ref={formRef} onSubmit={handleSubmit} noValidate className="space-y-4">
         <div className="grid gap-4 sm:grid-cols-2">
@@ -134,14 +209,17 @@ export function ContactForm() {
               className="w-full rounded-lg border border-white/15 bg-gray-950/80 px-3.5 py-2.5 text-sm text-white placeholder-gray-500 outline-none transition focus:border-sky-400"
             />
             <p id="name-error" className="error-msg mt-1.5 items-center gap-1.5 text-xs text-red-400">
-              <span aria-hidden="true">!</span> Please enter your name (at least 2 characters).
+              <span role="img" aria-label="Error">!</span> Please enter your name (at least 2 characters).
             </p>
           </div>
 
           <div className="meska-field">
-            <label htmlFor="contact-email" className="mb-1.5 block text-sm font-medium text-gray-200">
+            <label htmlFor="contact-email" className="mb-1 block text-sm font-medium text-gray-200">
               Work Email
             </label>
+            <span id="email-hint" className="mb-1.5 block text-xs text-gray-400">
+              Format: you@company.com
+            </span>
             <input
               id="contact-email"
               name="email"
@@ -149,35 +227,39 @@ export function ContactForm() {
               required
               autoComplete="email"
               placeholder="alex@company.com"
+              aria-describedby="email-hint"
               data-error="email-error"
               className="w-full rounded-lg border border-white/15 bg-gray-950/80 px-3.5 py-2.5 text-sm text-white placeholder-gray-500 outline-none transition focus:border-sky-400"
             />
             <p id="email-error" className="error-msg mt-1.5 items-center gap-1.5 text-xs text-red-400">
-              <span aria-hidden="true">!</span> Enter an email address in the format you@company.com.
+              <span role="img" aria-label="Error">!</span> Enter an email address in the format you@company.com.
             </p>
           </div>
         </div>
 
         <div className="meska-field">
           <label htmlFor="contact-service" className="mb-1.5 block text-sm font-medium text-gray-200">
-            How can we help?
+            Which automation are you looking for?
           </label>
           <select
             id="contact-service"
             name="service"
             required
-            defaultValue="AI & Workflow Automation"
+            defaultValue="Turnkey AI Blueprint ($3,500)"
             className="w-full rounded-lg border border-white/15 bg-gray-950/80 px-3.5 py-2.5 text-sm text-white outline-none transition focus:border-sky-400"
           >
-            <option value="AI & Workflow Automation">AI &amp; Workflow Automation Setup</option>
-            <option value="Business IT Retainer">Business IT &amp; Cloud Management</option>
-            <option value="On-Demand Remote Support">On-Demand Remote Support ($20 / 30 min)</option>
+            <option value="Turnkey AI Blueprint ($3,500)">Turnkey AI Blueprint ($3,500 fixed build)</option>
+            <option value="Bilingual EN/ES Lead & Booking Agent">Bilingual (EN/ES) Lead &amp; Booking Agent</option>
+            <option value="Invoice & PDF Document Autopilot">Invoice, PO &amp; BOL Document Autopilot</option>
+            <option value="Private Company Docs Copilot">Private Company Docs &amp; Ops Copilot</option>
+            <option value="Executive AI Audit & Workshop ($1,500)">Executive AI Audit &amp; Workshop ($1,500)</option>
+            <option value="Dedicated Automation Partner ($2,500/mo)">Dedicated Automation Partner ($2,500/mo)</option>
           </select>
         </div>
 
         <div className="meska-field">
           <label htmlFor="contact-message" className="mb-1.5 block text-sm font-medium text-gray-200">
-            Project or issue details
+            What manual workflow is slowing your team down?
           </label>
           <textarea
             id="contact-message"
@@ -185,12 +267,12 @@ export function ContactForm() {
             rows={4}
             required
             minLength={10}
-            placeholder="Tell us about your team size, tools (Slack, M365, Google Workspace), or what you want to automate..."
+            placeholder="Tell us your team size, tools (WhatsApp, Gmail/M365, QuickBooks, Slack, Google Drive), and the repetitive bottleneck you want automated..."
             data-error="message-error"
             className="w-full rounded-lg border border-white/15 bg-gray-950/80 px-3.5 py-2.5 text-sm text-white placeholder-gray-500 outline-none transition focus:border-sky-400"
           />
           <p id="message-error" className="error-msg mt-1.5 items-center gap-1.5 text-xs text-red-400">
-            <span aria-hidden="true">!</span> Please include a brief description (at least 10 characters).
+            <span role="img" aria-label="Error">!</span> Please include a brief description (at least 10 characters).
           </p>
         </div>
 
@@ -198,7 +280,7 @@ export function ContactForm() {
           type="submit"
           className="w-full rounded-lg bg-sky-400 px-5 py-3 text-sm font-semibold text-gray-950 transition hover:bg-sky-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400"
         >
-          Send Inquiry to hello@meskait.com
+          Book Your Free 15-Min Workflow Audit
         </button>
 
         {submitted && (

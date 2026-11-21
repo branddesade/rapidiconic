@@ -2,124 +2,153 @@ import { MeskaEmblem, MeskaLogo } from '@/components/Logo'
 import { StarField } from '@/components/StarField'
 import { ContactForm } from '@/components/ContactForm'
 
-const services = [
+const blueprints = [
   {
-    tag: '01 / AUTOMATION',
-    title: 'AI & Workflow Automation',
+    tag: '01 / LEAD & BOOKING',
+    title: 'Bilingual (EN/ES) Lead & Booking Agent',
     description:
-      'Eliminate repetitive manual work across your team. We design, connect, and deploy practical AI workflows that run inside the tools you already use.',
+      'Stop losing Miami leads to slow replies. Our AI responds to web forms, SMS, WhatsApp, and missed calls in under 10 seconds in fluent English or Spanish.',
     bullets: [
-      'Internal Slack & Teams IT/ops copilots',
-      'Automated employee onboarding & offboarding',
-      'Inbox triage, CRM sync & document routing',
-      'Custom n8n, Zapier & API integrations',
+      'Instant English & Spanish qualification 24/7',
+      'Direct Google Calendar / CRM appointment booking',
+      'Automated follow-up sequences & owner SMS alerts',
+      'Zero per-seat SaaS lock-in',
     ],
   },
   {
-    tag: '02 / MANAGED IT',
-    title: 'Cloud, Security & Device Ops',
+    tag: '02 / DOCUMENT AUTOPILOT',
+    title: 'Invoice, PO & BOL Document Autopilot',
     description:
-      'Keep your laptops, accounts, and company data locked down without hiring a full-time IT department. Built for lean teams of 5 to 50.',
+      'Drop PDFs into a private upload portal or forward them to invoices@. AI extracts line items, totals, due dates, and renewal risks in seconds.',
     bullets: [
-      'Google Workspace & Microsoft 365 admin',
-      'Zero-touch MDM (Intune, Mosyle, Jamf)',
-      'MFA enforcement, 1Password & SSO setup',
-      'Automated encrypted backups & DNS security',
+      'Extracts invoices, POs, quotes & bills of lading',
+      'Flags auto-renewal traps, due dates & price changes',
+      'Syncs cleanly to QuickBooks, Sheets, or Slack',
+      '1-click human approval before posting',
     ],
   },
   {
-    tag: '03 / REMOTE DESK',
-    title: 'On-Demand Remote Support',
+    tag: '03 / PRIVATE COPILOT',
+    title: 'Private Company Docs & Ops Copilot',
     description:
-      'Fast, encrypted remote troubleshooting for macOS and Windows via RustDesk. Ideal for urgent fixes, software setups, and performance recovery.',
+      'Turn your SOPs, pricing sheets, menus, and client manuals into a private AI assistant inside Slack, WhatsApp, or your team portal.',
     bullets: [
-      'Crash, freeze & slow-boot diagnostics',
-      'Software installs, migrations & OS upgrades',
-      'Data recovery & local backup setup',
-      'No fix, no fee guarantee on single sessions',
+      'Answers staff questions with exact file citations',
+      'Connects Google Drive, Nextcloud, Notion & M365',
+      'Runs on private infrastructure & zero-training APIs',
+      'Cuts repetitive owner & manager interruptions',
     ],
+  },
+]
+
+const industries = [
+  {
+    title: 'Doral Logistics & Importers',
+    description:
+      'Automated BOL, customs paperwork & vendor PO extraction into spreadsheets and ERPs.',
+  },
+  {
+    title: 'Clinics & Medspas',
+    description:
+      '24/7 bilingual EN/ES WhatsApp/SMS lead intake, reminders, and consultation booking.',
+  },
+  {
+    title: 'Real Estate & Property Mgmt',
+    description:
+      'Instant bilingual tenant/buyer qualification, lease parsing, and maintenance triage.',
+  },
+  {
+    title: 'Contractors, Law & Hospitality',
+    description:
+      'Proposal/invoice triage, vendor quote comparisons, and instant staff SOP copilots.',
   },
 ]
 
 const steps = [
   {
     num: '01',
-    title: '15-Min Stack & Workflow Audit',
-    body: 'We review your current tools, security gaps, and the manual tasks costing your team hours every week.',
+    title: 'Free 15-Min Workflow Audit',
+    body: 'Bring 2–3 real PDFs, messy inboxes, or lead bottlenecks. We calculate ROI and show a live working demo.',
   },
   {
     num: '02',
-    title: 'Build, Secure & Automate',
-    body: 'We lock down your accounts and devices, then ship your custom AI workflows and integrations with full documentation.',
+    title: '7-Day Fixed-Price Private Build',
+    body: 'We deploy your workflow on self-hosted n8n and private cloud infrastructure—you own your data and workflows.',
   },
   {
     num: '03',
-    title: 'Ongoing Support & Monitoring',
-    body: 'Fast remote helpdesk whenever someone gets stuck, plus continuous maintenance as your team and stack grow.',
+    title: 'Managed Hosting & Tuning',
+    body: 'We monitor uptime, handle API/model upgrades, and add new automations as your volume scales.',
   },
 ]
 
 const tiers = [
   {
-    name: 'Remote Fix Session',
-    price: '$20',
-    unit: '/ 30 min',
+    name: 'Executive AI Audit & Workshop',
+    price: '$1,500',
+    unit: 'one-time',
     highlight: false,
-    description: 'Fast 1-on-1 remote troubleshooting for individuals and urgent workstation issues.',
+    badge: null,
+    description:
+      '90-minute on-site (Coral Gables, Brickell, Doral) or remote workshop for leadership teams ready to map real ROI.',
     features: [
-      '90% of issues resolved under 30 minutes',
-      'Encrypted RustDesk remote session',
-      'macOS & Windows support',
-      'No fix, no fee guarantee',
+      'Live AI prototype built on your real documents',
+      '3 highest-ROI workflow blueprints prioritized',
+      'Hands-on team Q&A in English or Spanish',
+      '100% credited toward your first build within 30 days',
     ],
-    cta: 'Book a Session',
+    cta: 'Book Workshop',
   },
   {
-    name: 'Business IT + AI Retainer',
-    price: '$125',
-    unit: '/ user / mo',
+    name: 'Turnkey AI Blueprint',
+    price: '$3,500',
+    unit: 'fixed build',
     highlight: true,
-    description: 'Complete IT management plus ongoing AI workflow automation for growing teams.',
+    badge: 'Most Popular',
+    description:
+      'One complete production AI workflow deployed privately in 7 days. Optional $750/mo managed hosting & monitoring.',
     features: [
-      'Unlimited remote helpdesk support',
-      'Google Workspace / M365 & MDM admin',
-      'MFA, security hardening & backups',
-      '1 custom AI workflow built every quarter',
+      'Any 1 core blueprint customized to your stack',
+      'Private self-hosted n8n instance (no Zapier tax)',
+      'Bilingual EN/ES prompts & human-in-the-loop alerts',
+      'Team handoff video, SOPs & 30 days of tuning',
     ],
-    cta: 'Start Retainer',
+    cta: 'Start a 7-Day Build',
   },
   {
-    name: 'AI Automation Sprint',
-    price: 'Custom',
-    unit: 'fixed scope',
+    name: 'Dedicated Automation Partner',
+    price: '$2,500',
+    unit: '/ month',
     highlight: false,
-    description: 'Dedicated 2-week sprint to scope, build, and deploy custom AI agents & automations.',
+    badge: null,
+    description:
+      'Ongoing multi-workflow engineering and managed AI hosting for 10–50 person teams automating operations every month.',
     features: [
-      'End-to-end workflow architecture',
-      'Slack, email, CRM & API integrations',
-      'Staff handoff & SOP documentation',
-      '30 days of post-launch tuning',
+      'Continuous new workflows & prompt optimization',
+      '24/7 execution monitoring & error recovery',
+      'Private Nextcloud AI-Inbox & Slack/WhatsApp copilots',
+      'Includes Google Workspace / M365 security hardening',
     ],
-    cta: 'Scope a Sprint',
+    cta: 'Apply for Partnership',
   },
 ]
 
 const faqs = [
   {
-    q: 'What kinds of AI workflows do you actually build?',
-    a: 'Practical, high-ROI automations: internal Slack/Teams helpdesk bots trained on your SOPs, automated new-hire account provisioning, client intake triage, invoice/receipt routing, and CRM updates using OpenAI/Claude APIs and n8n.',
+    q: 'Is my company data kept private, or does it train public AI models?',
+    a: 'Your workflows run on your own private self-hosted n8n and Nextcloud infrastructure paired with paid-tier Claude, Gemini, and OpenAI enterprise APIs—where inputs are never used to train public models.',
   },
   {
-    q: 'Do you only work with companies in Miami?',
-    a: 'We are based in Miami, FL and support local businesses on-site when needed, while serving startups and small businesses nationwide over encrypted remote sessions and cloud admin.',
+    q: 'How are you different from big AI consulting agencies?',
+    a: 'We ship productized, fixed-price blueprints in 7 days instead of selling 3-month strategy decks and $25k–$75k custom retainers. You see a working prototype on your real data before scaling.',
   },
   {
-    q: 'How does the $20 / 30-minute remote session work?',
-    a: 'Email hello@meskait.com with a screenshot or short description of your issue. We connect via RustDesk (open-source, encrypted remote desktop), fix the problem, and you only pay after it is resolved.',
+    q: 'Why do you build on self-hosted n8n instead of Zapier or Make?',
+    a: 'Self-hosted n8n eliminates per-task pricing spikes as your volume grows, keeps sensitive documents on private servers you control, and connects cleanly with Claude, Gemini, OpenAI, WhatsApp, and custom APIs.',
   },
   {
-    q: 'What tools and platforms do you support?',
-    a: 'Google Workspace, Microsoft 365, macOS, Windows, Cloudflare, Vercel, RustDesk, Tailscale, 1Password/Bitwarden, n8n, Slack, and major AI model APIs.',
+    q: 'Do you work on-site in Miami and support Spanish-speaking teams?',
+    a: 'Yes. We are based in Miami serving Coral Gables, Brickell, Doral, and South Miami with on-site executive workshops and fluent bilingual English/Spanish workflows, plus remote delivery nationwide.',
   },
 ]
 
@@ -146,8 +175,11 @@ export default function HomePage() {
           </a>
 
           <nav aria-label="Primary" className="hidden items-center gap-8 text-sm font-medium text-gray-300 md:flex">
-            <a href="#services" className="transition hover:text-white">
-              Services
+            <a href="#blueprints" className="transition hover:text-white">
+              Blueprints
+            </a>
+            <a href="#industries" className="transition hover:text-white">
+              Industries
             </a>
             <a href="#process" className="transition hover:text-white">
               Process
@@ -164,7 +196,7 @@ export default function HomePage() {
             href="#contact"
             className="rounded-lg bg-sky-400 px-4 py-2 text-sm font-semibold text-gray-950 transition hover:bg-sky-300"
           >
-            Get Support
+            Book Free Audit
           </a>
         </div>
       </header>
@@ -175,17 +207,18 @@ export default function HomePage() {
           <div className="mx-auto max-w-3xl text-center">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-sky-400/30 bg-sky-400/10 px-3.5 py-1 text-xs font-medium tracking-wide text-sky-300">
               <span className="h-1.5 w-1.5 rounded-full bg-sky-400" />
-              MIAMI BASED · REMOTE NATIONWIDE · 10+ YEARS EXPERIENCE
+              MIAMI, FL &middot; ENGLISH &amp; ESPA&Ntilde;OL &middot; DEPLOYED IN 7 DAYS
             </div>
 
             <h1 className="font-display text-4xl font-bold tracking-tight text-white sm:text-6xl">
-              IT Support &amp; AI Automation{' '}
-              <span className="text-sky-300">Built for Speed.</span>
+              AI Workflow Automation{' '}
+              <span className="text-sky-300">Without Enterprise Bloat.</span>
             </h1>
 
             <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-gray-300 sm:text-lg">
-              Meska IT keeps your company&apos;s devices, cloud workspace, and security locked
-              down—while building practical AI workflows that eliminate repetitive busywork.
+              Fixed-price AI agents and document automations for 5&ndash;50 person South Florida
+              businesses. Deployed privately on your own server in 7 days&mdash;no $50k retainers,
+              no per-task Zapier markups.
             </p>
 
             <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
@@ -193,13 +226,13 @@ export default function HomePage() {
                 href="#contact"
                 className="rounded-lg bg-sky-400 px-6 py-3 text-sm font-semibold text-gray-950 transition hover:bg-sky-300"
               >
-                Book a Free 15-Min Audit
+                Book a Free 15-Min Workflow Audit
               </a>
               <a
-                href="mailto:hello@meskait.com"
+                href="#pricing"
                 className="rounded-lg border border-white/15 bg-white/5 px-6 py-3 text-sm font-semibold text-white transition hover:border-sky-400/50 hover:bg-white/10"
               >
-                hello@meskait.com
+                See Fixed Pricing
               </a>
             </div>
 
@@ -208,46 +241,47 @@ export default function HomePage() {
                 Trusted Stack &amp; Platforms
               </p>
               <div className="mt-4 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm font-medium text-gray-400">
-                <span>Google Workspace</span>
-                <span>Microsoft 365</span>
-                <span>RustDesk</span>
-                <span>Cloudflare</span>
-                <span>n8n &amp; OpenAI</span>
-                <span>Proton</span>
+                <span>n8n (Self-Hosted)</span>
+                <span>Claude &amp; Gemini APIs</span>
+                <span>WhatsApp &amp; Slack</span>
+                <span>QuickBooks &amp; CRMs</span>
+                <span>Nextcloud</span>
+                <span>Google Workspace &amp; M365</span>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Services */}
-        <section id="services" className="mx-auto max-w-6xl px-6 py-20">
+        {/* Productized Blueprints */}
+        <section id="blueprints" className="mx-auto max-w-6xl px-6 py-20">
           <div className="max-w-2xl">
-            <p className="font-meska text-xs tracking-widest text-sky-400">SERVICES</p>
+            <p className="font-meska text-xs tracking-widest text-sky-400">PRODUCTIZED BLUEPRINTS</p>
             <h2 className="mt-2 font-display text-3xl font-bold text-white sm:text-4xl">
-              Everything your IT &amp; ops stack needs
+              High-ROI automations shipped in 7 days
             </h2>
             <p className="mt-3 text-gray-400">
-              From urgent 30-minute remote fixes to full business automation and cloud management.
+              Proven, fixed-scope AI systems tailored to your exact tools&mdash;no six-month
+              consulting discoveries.
             </p>
           </div>
 
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
-            {services.map((service) => (
+            {blueprints.map((blueprint) => (
               <div
-                key={service.title}
+                key={blueprint.title}
                 className="flex flex-col rounded-2xl border border-white/10 bg-gray-900/60 p-7 backdrop-blur-sm transition hover:border-sky-400/40"
               >
                 <span className="font-mono text-xs font-semibold tracking-wider text-sky-400">
-                  {service.tag}
+                  {blueprint.tag}
                 </span>
                 <h3 className="mt-3 font-display text-xl font-semibold text-white">
-                  {service.title}
+                  {blueprint.title}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-gray-400">
-                  {service.description}
+                  {blueprint.description}
                 </p>
                 <ul className="mt-6 space-y-2.5 border-t border-white/10 pt-5 text-sm text-gray-300">
-                  {service.bullets.map((b) => (
+                  {blueprint.bullets.map((b) => (
                     <li key={b} className="flex items-start gap-2.5">
                       <span className="mt-1.5 h-1.5 w-1.5 flex-none rounded-full bg-sky-400" />
                       <span>{b}</span>
@@ -259,13 +293,44 @@ export default function HomePage() {
           </div>
         </section>
 
+        {/* Miami Industries */}
+        <section id="industries" className="border-t border-white/10 bg-gray-900/20 py-20">
+          <div className="mx-auto max-w-6xl px-6">
+            <div className="max-w-2xl">
+              <p className="font-meska text-xs tracking-widest text-sky-400">MIAMI INDUSTRIES</p>
+              <h2 className="mt-2 font-display text-3xl font-bold text-white sm:text-4xl">
+                Built for South Florida operators
+              </h2>
+              <p className="mt-3 text-gray-400">
+                Real workflows modeled after the daily bottlenecks of Miami-Dade and Broward teams.
+              </p>
+            </div>
+
+            <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+              {industries.map((industry) => (
+                <div
+                  key={industry.title}
+                  className="rounded-2xl border border-white/10 bg-gray-950/70 p-6 transition hover:border-sky-400/40"
+                >
+                  <h3 className="font-display text-base font-semibold text-white">
+                    {industry.title}
+                  </h3>
+                  <p className="mt-2 text-sm leading-relaxed text-gray-400">
+                    {industry.description}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
         {/* Process */}
         <section id="process" className="border-y border-white/10 bg-gray-900/30 py-20">
           <div className="mx-auto max-w-6xl px-6">
             <div className="max-w-2xl">
               <p className="font-meska text-xs tracking-widest text-sky-400">PROCESS</p>
               <h2 className="mt-2 font-display text-3xl font-bold text-white sm:text-4xl">
-                Simple, zero-jargon execution
+                From bottleneck to live automation in 7 days
               </h2>
             </div>
 
@@ -288,10 +353,11 @@ export default function HomePage() {
           <div className="mx-auto max-w-2xl text-center">
             <p className="font-meska text-xs tracking-widest text-sky-400">PRICING</p>
             <h2 className="mt-2 font-display text-3xl font-bold text-white sm:text-4xl">
-              Transparent pricing, zero surprises
+              Transparent fixed pricing, zero agency bloat
             </h2>
             <p className="mt-3 text-gray-400">
-              Start with a single remote session or lock in predictable monthly IT &amp; AI support.
+              Start with a working executive workshop, deploy a single turnkey blueprint in 7 days,
+              or keep us on retainer.
             </p>
           </div>
 
@@ -305,11 +371,11 @@ export default function HomePage() {
                     : 'flex flex-col rounded-2xl border border-white/10 bg-gray-900/50 p-7'
                 }
               >
-                <div className="flex items-center justify-between">
+                <div className="flex items-center justify-between gap-2">
                   <h3 className="font-display text-lg font-semibold text-white">{tier.name}</h3>
-                  {tier.highlight && (
-                    <span className="rounded-full bg-sky-400/15 px-2.5 py-0.5 text-xs font-semibold text-sky-300">
-                      Popular
+                  {tier.badge && (
+                    <span className="flex-none rounded-full bg-sky-400/15 px-2.5 py-0.5 text-xs font-semibold text-sky-300">
+                      {tier.badge}
                     </span>
                   )}
                 </div>
@@ -360,8 +426,7 @@ export default function HomePage() {
                 key={item.q}
                 className="rounded-xl border border-white/10 bg-gray-900/60 px-5 py-4 transition open:border-sky-400/40"
               >
-                <summary className="flex items-center justify-between gap-4 text-left text-sm font-semibold text-white sm:text-base">
-                  <span>{item.q}</span>
+                <summary className="flex items-center gap-3 text-left text-sm font-semibold text-white sm:text-base">
                   <svg
                     viewBox="0 0 20 20"
                     fill="currentColor"
@@ -374,8 +439,9 @@ export default function HomePage() {
                       clipRule="evenodd"
                     />
                   </svg>
+                  <span>{item.q}</span>
                 </summary>
-                <p className="mt-3 text-sm leading-relaxed text-gray-400">{item.a}</p>
+                <p className="mt-3 pl-8 text-sm leading-relaxed text-gray-400">{item.a}</p>
               </details>
             ))}
           </div>
@@ -386,14 +452,14 @@ export default function HomePage() {
           <div className="mb-8 text-center">
             <p className="font-meska text-xs tracking-widest text-sky-400">CONTACT</p>
             <h2 className="mt-2 font-display text-3xl font-bold text-white sm:text-4xl">
-              Ready to streamline your IT?
+              Ready to automate your biggest bottleneck?
             </h2>
             <p className="mt-3 text-gray-400">
-              Send a message below or email{' '}
+              Book a free 15-minute workflow audit below or email{' '}
               <a href="mailto:hello@meskait.com" className="text-sky-300 hover:underline">
                 hello@meskait.com
-              </a>
-              .
+              </a>{' '}
+              &mdash; hablo espa&ntilde;ol.
             </p>
           </div>
 
@@ -412,8 +478,11 @@ export default function HomePage() {
             <a href="mailto:hello@meskait.com" className="hover:text-white">
               hello@meskait.com
             </a>
-            <a href="#services" className="hover:text-white">
-              Services
+            <a href="#blueprints" className="hover:text-white">
+              Blueprints
+            </a>
+            <a href="#industries" className="hover:text-white">
+              Industries
             </a>
             <a href="#pricing" className="hover:text-white">
               Pricing

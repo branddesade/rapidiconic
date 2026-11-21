@@ -9,11 +9,11 @@
 }
 
 .meska-accordion summary .faq-chevron {
-  transition: transform 0.2s ease;
+  rotate: -90deg;
 }
 
 .meska-accordion details[open] > summary .faq-chevron {
-  transform: rotate(180deg);
+  rotate: 0deg;
 }
 
 .meska-accordion details::details-content {
@@ -27,6 +27,10 @@
 }
 
 @media (prefers-reduced-motion: no-preference) {
+  .meska-accordion summary .faq-chevron {
+    transition: rotate 0.2s ease;
+  }
+
   .meska-accordion details::details-content {
     transition: block-size, content-visibility, display;
     transition-duration: 0.28s;
