@@ -2,41 +2,41 @@ import { MeskaEmblem, MeskaLogo } from '@/components/Logo'
 import { StarField } from '@/components/StarField'
 import { ContactForm } from '@/components/ContactForm'
 
-const blueprints = [
+const solutions = [
   {
-    tag: '01 / LEAD & BOOKING',
-    title: 'Bilingual (EN/ES) Lead & Booking Agent',
+    tag: '01 / LEADS & BOOKINGS',
+    title: '24/7 English & Spanish Lead Responder',
     description:
-      'Stop losing Miami leads to slow replies. Our AI responds to web forms, SMS, WhatsApp, and missed calls in under 10 seconds in fluent English or Spanish.',
+      'Stop losing Miami customers to slow replies. Our system responds to website inquiries, text messages, WhatsApp, and missed calls in under 10 seconds—in natural English or Spanish.',
     bullets: [
-      'Instant English & Spanish qualification 24/7',
-      'Direct Google Calendar / CRM appointment booking',
-      'Automated follow-up sequences & owner SMS alerts',
-      'Zero per-seat SaaS lock-in',
+      'Answers questions and pre-screens leads in English or Spanish, 24/7',
+      'Books appointments straight onto your Google or Outlook Calendar',
+      'Follows up automatically and texts you when a hot lead is ready',
+      'No per-employee monthly software fees—you own the setup',
     ],
   },
   {
-    tag: '02 / DOCUMENT AUTOPILOT',
-    title: 'Invoice, PO & BOL Document Autopilot',
+    tag: '02 / INVOICES & PAPERWORK',
+    title: 'Automatic Invoice & Paperwork Entry',
     description:
-      'Drop PDFs into a private upload portal or forward them to invoices@. AI extracts line items, totals, due dates, and renewal risks in seconds.',
+      'Forward PDFs by email or drop them into a private folder. The system reads line items, totals, due dates, and surprise price hikes in seconds—with zero manual typing.',
     bullets: [
-      'Extracts invoices, POs, quotes & bills of lading',
-      'Flags auto-renewal traps, due dates & price changes',
-      'Syncs cleanly to QuickBooks, Sheets, or Slack',
-      '1-click human approval before posting',
+      'Reads invoices, purchase orders, vendor quotes, and bills of lading',
+      'Flags surprise price hikes, upcoming due dates, and auto-renewal traps',
+      'Sends clean entries to QuickBooks, Excel, Google Sheets, or your inbox',
+      'Your team approves every entry with 1 click before it goes into QuickBooks',
     ],
   },
   {
-    tag: '03 / PRIVATE COPILOT',
-    title: 'Private Company Docs & Ops Copilot',
+    tag: '03 / TEAM ANSWERS',
+    title: 'Private Company File & Handbook Assistant',
     description:
-      'Turn your SOPs, pricing sheets, menus, and client manuals into a private AI assistant inside Slack, WhatsApp, or your team portal.',
+      'Turn your pricing sheets, service menus, training manuals, and policies into a private assistant your staff can message on WhatsApp, Slack, or any phone or computer.',
     bullets: [
-      'Answers staff questions with exact file citations',
-      'Connects Google Drive, Nextcloud, Notion & M365',
-      'Runs on private infrastructure & zero-training APIs',
-      'Cuts repetitive owner & manager interruptions',
+      'Answers staff questions and shows the exact document it came from',
+      'Connects to your existing Google Drive, Microsoft OneDrive, or company folders',
+      '100% private—your files are never shared with public ChatGPT or outside tools',
+      'Cuts the constant "what do we charge?" and "where is that file?" interruptions',
     ],
   },
 ]
@@ -45,75 +45,75 @@ const industries = [
   {
     title: 'Doral Logistics & Importers',
     description:
-      'Automated BOL, customs paperwork & vendor PO extraction into spreadsheets and ERPs.',
+      'Turn bills of lading, customs forms, and vendor purchase orders straight into your spreadsheets and inventory software—without hours of typing.',
   },
   {
     title: 'Clinics & Medspas',
     description:
-      '24/7 bilingual EN/ES WhatsApp/SMS lead intake, reminders, and consultation booking.',
+      '24/7 English and Spanish WhatsApp and text replies, appointment reminders, and consultation booking so no new patient slips away.',
   },
   {
     title: 'Real Estate & Property Mgmt',
     description:
-      'Instant bilingual tenant/buyer qualification, lease parsing, and maintenance triage.',
+      'Instant English and Spanish replies to buyers and tenants, key lease dates pulled automatically, and maintenance requests sent to the right person.',
   },
   {
     title: 'Contractors, Law & Hospitality',
     description:
-      'Proposal/invoice triage, vendor quote comparisons, and instant staff SOP copilots.',
+      'Compare vendor quotes side by side, process invoices faster, and give your crew instant answers from your company manuals.',
   },
 ]
 
 const steps = [
   {
     num: '01',
-    title: 'Free 15-Min Workflow Audit',
-    body: 'Bring 2–3 real PDFs, messy inboxes, or lead bottlenecks. We calculate ROI and show a live working demo.',
+    title: 'Free 15-Min Live Demo',
+    body: 'Bring 2–3 real invoices, a messy inbox, or your current lead process. We calculate the hours saved and show you a working preview.',
   },
   {
     num: '02',
-    title: '7-Day Fixed-Price Private Build',
-    body: 'We deploy your workflow on self-hosted n8n and private cloud infrastructure—you own your data and workflows.',
+    title: '7-Day Fixed-Price Setup',
+    body: 'We build and connect your system privately around the tools you already use. You own everything we build, with no hidden add-ons.',
   },
   {
     num: '03',
-    title: 'Managed Hosting & Tuning',
-    body: 'We monitor uptime, handle API/model upgrades, and add new automations as your volume scales.',
+    title: 'Optional Ongoing Support',
+    body: 'Keep us on if you want hands-off maintenance—we make sure everything keeps running smoothly, handle software updates, and make tweaks as you grow.',
   },
 ]
 
 const tiers = [
   {
-    name: 'Executive AI Audit & Workshop',
+    name: 'Executive AI Workshop',
     price: '$1,500',
     unit: 'one-time',
     highlight: false,
     badge: null,
     description:
-      '90-minute on-site (Coral Gables, Brickell, Doral) or remote workshop for leadership teams ready to map real ROI.',
+      'A 90-minute in-person session (Coral Gables, Brickell, Doral) or video call for owners and managers who want real results, not hype.',
     features: [
-      'Live AI prototype built on your real documents',
-      '3 highest-ROI workflow blueprints prioritized',
+      'Live working demo built using your actual company documents',
+      'Your top 3 time-saving opportunities ranked by payback',
       'Hands-on team Q&A in English or Spanish',
-      '100% credited toward your first build within 30 days',
+      '100% credited toward your first system if you start within 30 days',
     ],
     cta: 'Book Workshop',
   },
   {
-    name: 'Turnkey AI Blueprint',
+    name: 'Done-For-You AI System',
     price: '$3,500',
-    unit: 'fixed build',
+    unit: 'one-time setup',
     highlight: true,
     badge: 'Most Popular',
     description:
-      'One complete production AI workflow deployed privately in 7 days. Optional $750/mo managed hosting & monitoring.',
+      'One complete AI system built, tested, and running privately for your business in 7 days. Optional $750/mo for ongoing support and maintenance.',
     features: [
-      'Any 1 core blueprint customized to your stack',
-      'Private self-hosted n8n instance (no Zapier tax)',
-      'Bilingual EN/ES prompts & human-in-the-loop alerts',
-      'Team handoff video, SOPs & 30 days of tuning',
+      'Any 1 core system customized to the tools you already use',
+      'Runs on a private setup you own—no surprise fees per message or invoice',
+      'Fluent English & Spanish replies with human approval before key actions',
+      'Plain-English training videos, step-by-step guides & 30 days of adjustments',
     ],
-    cta: 'Start a 7-Day Build',
+    cta: 'Start Your 7-Day Setup',
   },
   {
     name: 'Dedicated Automation Partner',
@@ -122,33 +122,41 @@ const tiers = [
     highlight: false,
     badge: null,
     description:
-      'Ongoing multi-workflow engineering and managed AI hosting for 10–50 person teams automating operations every month.',
+      'Your outsourced automation team for 10–50 person companies looking to eliminate more manual work every month.',
     features: [
-      'Continuous new workflows & prompt optimization',
-      '24/7 execution monitoring & error recovery',
-      'Private Nextcloud AI-Inbox & Slack/WhatsApp copilots',
-      'Includes Google Workspace / M365 security hardening',
+      'New automations added and refined every month as needs come up',
+      '24/7 monitoring so if anything breaks, we fix it before you notice',
+      'Private document upload folder plus WhatsApp & team chat assistants',
+      'Includes security setup for your company Google & Microsoft accounts',
     ],
-    cta: 'Apply for Partnership',
+    cta: 'Discuss Monthly Support',
   },
 ]
 
 const faqs = [
   {
-    q: 'Is my company data kept private, or does it train public AI models?',
-    a: 'Your workflows run on your own private self-hosted n8n and Nextcloud infrastructure paired with paid-tier Claude, Gemini, and OpenAI enterprise APIs—where inputs are never used to train public models.',
+    q: 'Is my company data kept private, or does it get shared with public AI?',
+    a: 'Your data stays strictly private. Everything runs on a dedicated private setup that you own and control, using paid business AI accounts (like ChatGPT for Business, Google, and Claude) that are contractually barred from sharing your files or using them to train public AI.',
+  },
+  {
+    q: 'What if the AI makes a mistake with a customer or an invoice?',
+    a: 'We build strict guardrails into every system. Lead responders only answer from your approved pricing and policies—and hand off tricky questions straight to a human. For invoices and bookkeeping, your team approves entries with 1 click before anything goes into QuickBooks or your spreadsheets.',
   },
   {
     q: 'How are you different from big AI consulting agencies?',
-    a: 'We ship productized, fixed-price blueprints in 7 days instead of selling 3-month strategy decks and $25k–$75k custom retainers. You see a working prototype on your real data before scaling.',
+    a: 'Big agencies charge $25,000–$75,000 and spend months writing strategy slide decks. We build proven, fixed-price systems in 7 days—and we show you a working preview using your own real documents before you commit to expanding.',
   },
   {
-    q: 'Why do you build on self-hosted n8n instead of Zapier or Make?',
-    a: 'Self-hosted n8n eliminates per-task pricing spikes as your volume grows, keeps sensitive documents on private servers you control, and connects cleanly with Claude, Gemini, OpenAI, WhatsApp, and custom APIs.',
+    q: 'Will I get hit with rising monthly software bills or lose control if we stop working together?',
+    a: 'No. Many agencies stitch tools together on third-party platforms that charge you extra for every message or invoice you process—and hold your setup hostage if you leave. We build on software you own and control. You only pay the small direct utility cost to run it (typically $20–$50/month paid straight to your own accounts), and you keep everything even without ongoing support.',
+  },
+  {
+    q: 'Do I need an IT person, or will my staff have to learn complicated new software?',
+    a: 'Not at all. We handle the entire setup from start to finish, and your team keeps using the tools they already know—WhatsApp, email, QuickBooks, and spreadsheets. We also record short walkthrough videos in English or Spanish so anyone on your staff can use it on day one.',
   },
   {
     q: 'Do you work on-site in Miami and support Spanish-speaking teams?',
-    a: 'Yes. We are based in Miami serving Coral Gables, Brickell, Doral, and South Miami with on-site executive workshops and fluent bilingual English/Spanish workflows, plus remote delivery nationwide.',
+    a: 'Yes. We are based in Miami and meet in person across Coral Gables, Brickell, Doral, and South Miami. Everything we build works naturally in English and Spanish, and we also support clients remotely nationwide.',
   },
 ]
 
@@ -175,14 +183,14 @@ export default function HomePage() {
           </a>
 
           <nav aria-label="Primary" className="hidden items-center gap-8 text-sm font-medium text-gray-300 md:flex">
-            <a href="#blueprints" className="transition hover:text-white">
-              Blueprints
+            <a href="#solutions" className="transition hover:text-white">
+              Solutions
             </a>
             <a href="#industries" className="transition hover:text-white">
               Industries
             </a>
             <a href="#process" className="transition hover:text-white">
-              Process
+              How It Works
             </a>
             <a href="#pricing" className="transition hover:text-white">
               Pricing
@@ -196,7 +204,7 @@ export default function HomePage() {
             href="#contact"
             className="rounded-lg bg-sky-400 px-4 py-2 text-sm font-semibold text-gray-950 transition hover:bg-sky-300"
           >
-            Book Free Audit
+            Book Free Demo
           </a>
         </div>
       </header>
@@ -207,18 +215,19 @@ export default function HomePage() {
           <div className="mx-auto max-w-3xl text-center">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-sky-400/30 bg-sky-400/10 px-3.5 py-1 text-xs font-medium tracking-wide text-sky-300">
               <span className="h-1.5 w-1.5 rounded-full bg-sky-400" />
-              MIAMI, FL &middot; ENGLISH &amp; ESPA&Ntilde;OL &middot; DEPLOYED IN 7 DAYS
+              MIAMI, FL &middot; ENGLISH &amp; ESPA&Ntilde;OL &middot; LIVE IN 7 DAYS
             </div>
 
             <h1 className="font-display text-4xl font-bold tracking-tight text-white sm:text-6xl">
-              AI Workflow Automation{' '}
-              <span className="text-sky-300">Without Enterprise Bloat.</span>
+              Cut Hours of Busywork.
+              <span className="mt-1 block text-sky-300">Practical AI in 7 Days.</span>
             </h1>
 
             <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-gray-300 sm:text-lg">
-              Fixed-price AI agents and document automations for 5&ndash;50 person South Florida
-              businesses. Deployed privately on your own server in 7 days&mdash;no $50k retainers,
-              no per-task Zapier markups.
+              Fixed-price AI systems for 5&ndash;50 person South Florida businesses&mdash;replying to
+              leads in English &amp; Spanish, entering invoices automatically, and answering staff
+              questions from your own files. Built around the tools you already use, with no $50k
+              retainers and no surprise software bills as you grow.
             </p>
 
             <div className="mt-9 flex flex-wrap items-center justify-center gap-4">
@@ -226,7 +235,7 @@ export default function HomePage() {
                 href="#contact"
                 className="rounded-lg bg-sky-400 px-6 py-3 text-sm font-semibold text-gray-950 transition hover:bg-sky-300"
               >
-                Book a Free 15-Min Workflow Audit
+                Book a Free 15-Min Live Demo
               </a>
               <a
                 href="#pricing"
@@ -238,50 +247,50 @@ export default function HomePage() {
 
             <div className="mt-14 border-t border-white/10 pt-8">
               <p className="text-xs font-medium uppercase tracking-widest text-gray-500">
-                Trusted Stack &amp; Platforms
+                Works With the Tools You Already Use
               </p>
               <div className="mt-4 flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-sm font-medium text-gray-400">
-                <span>n8n (Self-Hosted)</span>
-                <span>Claude &amp; Gemini APIs</span>
-                <span>WhatsApp &amp; Slack</span>
-                <span>QuickBooks &amp; CRMs</span>
-                <span>Nextcloud</span>
-                <span>Google Workspace &amp; M365</span>
+                <span>WhatsApp &amp; Text Messages</span>
+                <span>Gmail &amp; Outlook</span>
+                <span>QuickBooks</span>
+                <span>Google Drive &amp; Excel</span>
+                <span>Google &amp; Outlook Calendar</span>
+                <span>Slack &amp; Microsoft Teams</span>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Productized Blueprints */}
-        <section id="blueprints" className="mx-auto max-w-6xl px-6 py-20">
+        {/* Solutions */}
+        <section id="solutions" className="mx-auto max-w-6xl px-6 py-20">
           <div className="max-w-2xl">
-            <p className="font-meska text-xs tracking-widest text-sky-400">PRODUCTIZED BLUEPRINTS</p>
+            <p className="font-meska text-xs tracking-widest text-sky-400">WHAT WE BUILD</p>
             <h2 className="mt-2 font-display text-3xl font-bold text-white sm:text-4xl">
-              High-ROI automations shipped in 7 days
+              Three proven systems, live in 7 days
             </h2>
             <p className="mt-3 text-gray-400">
-              Proven, fixed-scope AI systems tailored to your exact tools&mdash;no six-month
-              consulting discoveries.
+              Fixed-price AI tools built around the software you already use&mdash;no months of
+              consulting meetings or slide decks.
             </p>
           </div>
 
           <div className="mt-12 grid gap-6 lg:grid-cols-3">
-            {blueprints.map((blueprint) => (
+            {solutions.map((solution) => (
               <div
-                key={blueprint.title}
+                key={solution.title}
                 className="flex flex-col rounded-2xl border border-white/10 bg-gray-900/60 p-7 backdrop-blur-sm transition hover:border-sky-400/40"
               >
                 <span className="font-mono text-xs font-semibold tracking-wider text-sky-400">
-                  {blueprint.tag}
+                  {solution.tag}
                 </span>
                 <h3 className="mt-3 font-display text-xl font-semibold text-white">
-                  {blueprint.title}
+                  {solution.title}
                 </h3>
                 <p className="mt-3 text-sm leading-relaxed text-gray-400">
-                  {blueprint.description}
+                  {solution.description}
                 </p>
                 <ul className="mt-6 space-y-2.5 border-t border-white/10 pt-5 text-sm text-gray-300">
-                  {blueprint.bullets.map((b) => (
+                  {solution.bullets.map((b) => (
                     <li key={b} className="flex items-start gap-2.5">
                       <span className="mt-1.5 h-1.5 w-1.5 flex-none rounded-full bg-sky-400" />
                       <span>{b}</span>
@@ -299,10 +308,11 @@ export default function HomePage() {
             <div className="max-w-2xl">
               <p className="font-meska text-xs tracking-widest text-sky-400">MIAMI INDUSTRIES</p>
               <h2 className="mt-2 font-display text-3xl font-bold text-white sm:text-4xl">
-                Built for South Florida operators
+                Built for South Florida businesses
               </h2>
               <p className="mt-3 text-gray-400">
-                Real workflows modeled after the daily bottlenecks of Miami-Dade and Broward teams.
+                Modeled around the daily paperwork and customer-response headaches of Miami-Dade and
+                Broward teams.
               </p>
             </div>
 
@@ -328,9 +338,9 @@ export default function HomePage() {
         <section id="process" className="border-y border-white/10 bg-gray-900/30 py-20">
           <div className="mx-auto max-w-6xl px-6">
             <div className="max-w-2xl">
-              <p className="font-meska text-xs tracking-widest text-sky-400">PROCESS</p>
+              <p className="font-meska text-xs tracking-widest text-sky-400">HOW IT WORKS</p>
               <h2 className="mt-2 font-display text-3xl font-bold text-white sm:text-4xl">
-                From bottleneck to live automation in 7 days
+                From daily headache to live system in 7 days
               </h2>
             </div>
 
@@ -353,11 +363,11 @@ export default function HomePage() {
           <div className="mx-auto max-w-2xl text-center">
             <p className="font-meska text-xs tracking-widest text-sky-400">PRICING</p>
             <h2 className="mt-2 font-display text-3xl font-bold text-white sm:text-4xl">
-              Transparent fixed pricing, zero agency bloat
+              Clear fixed pricing, no agency surprises
             </h2>
             <p className="mt-3 text-gray-400">
-              Start with a working executive workshop, deploy a single turnkey blueprint in 7 days,
-              or keep us on retainer.
+              Start with a hands-on team workshop, launch one complete AI system in 7 days, or keep
+              us on for ongoing monthly automation.
             </p>
           </div>
 
@@ -452,14 +462,14 @@ export default function HomePage() {
           <div className="mb-8 text-center">
             <p className="font-meska text-xs tracking-widest text-sky-400">CONTACT</p>
             <h2 className="mt-2 font-display text-3xl font-bold text-white sm:text-4xl">
-              Ready to automate your biggest bottleneck?
+              Ready to take busywork off your team&apos;s plate?
             </h2>
             <p className="mt-3 text-gray-400">
-              Book a free 15-minute workflow audit below or email{' '}
+              Book a free 15-minute live demo below or email{' '}
               <a href="mailto:hello@meskait.com" className="text-sky-300 hover:underline">
                 hello@meskait.com
               </a>{' '}
-              &mdash; hablo espa&ntilde;ol.
+              &mdash; hablamos espa&ntilde;ol.
             </p>
           </div>
 
@@ -478,8 +488,8 @@ export default function HomePage() {
             <a href="mailto:hello@meskait.com" className="hover:text-white">
               hello@meskait.com
             </a>
-            <a href="#blueprints" className="hover:text-white">
-              Blueprints
+            <a href="#solutions" className="hover:text-white">
+              Solutions
             </a>
             <a href="#industries" className="hover:text-white">
               Industries

@@ -147,9 +147,9 @@ export function ContactForm() {
     const service = String(data.get('service') || '').trim()
     const message = String(data.get('message') || '').trim()
 
-    const subject = encodeURIComponent(`[Meska AI] ${service} — ${name}`)
+    const subject = encodeURIComponent(`[Meska IT] ${service} — ${name}`)
     const body = encodeURIComponent(
-      `Name: ${name}\nEmail: ${email}\nAutomation: ${service}\n\nWorkflow Details:\n${message}`,
+      `Name: ${name}\nEmail: ${email}\nInterest: ${service}\n\nDetails:\n${message}`,
     )
 
     window.location.href = `mailto:hello@meskait.com?subject=${subject}&body=${body}`
@@ -171,7 +171,7 @@ export function ContactForm() {
       <div className="mb-6 flex flex-wrap items-center justify-between gap-3 border-b border-white/10 pb-5">
         <div>
           <p className="text-xs font-semibold uppercase tracking-widest text-sky-400">
-            Direct Miami Studio Inbox
+            Direct Miami Email
           </p>
           <a
             href="mailto:hello@meskait.com"
@@ -214,12 +214,14 @@ export function ContactForm() {
           </div>
 
           <div className="meska-field">
-            <label htmlFor="contact-email" className="mb-1 block text-sm font-medium text-gray-200">
-              Work Email
-            </label>
-            <span id="email-hint" className="mb-1.5 block text-xs text-gray-400">
-              Format: you@company.com
-            </span>
+            <div className="mb-1.5 flex items-baseline justify-between gap-2">
+              <label htmlFor="contact-email" className="text-sm font-medium text-gray-200">
+                Work Email
+              </label>
+              <span id="email-hint" className="text-xs text-gray-400">
+                Format: you@company.com
+              </span>
+            </div>
             <input
               id="contact-email"
               name="email"
@@ -239,27 +241,27 @@ export function ContactForm() {
 
         <div className="meska-field">
           <label htmlFor="contact-service" className="mb-1.5 block text-sm font-medium text-gray-200">
-            Which automation are you looking for?
+            What are you most interested in?
           </label>
           <select
             id="contact-service"
             name="service"
             required
-            defaultValue="Turnkey AI Blueprint ($3,500)"
+            defaultValue="Done-For-You AI System ($3,500)"
             className="w-full rounded-lg border border-white/15 bg-gray-950/80 px-3.5 py-2.5 text-sm text-white outline-none transition focus:border-sky-400"
           >
-            <option value="Turnkey AI Blueprint ($3,500)">Turnkey AI Blueprint ($3,500 fixed build)</option>
-            <option value="Bilingual EN/ES Lead & Booking Agent">Bilingual (EN/ES) Lead &amp; Booking Agent</option>
-            <option value="Invoice & PDF Document Autopilot">Invoice, PO &amp; BOL Document Autopilot</option>
-            <option value="Private Company Docs Copilot">Private Company Docs &amp; Ops Copilot</option>
-            <option value="Executive AI Audit & Workshop ($1,500)">Executive AI Audit &amp; Workshop ($1,500)</option>
+            <option value="Done-For-You AI System ($3,500)">Done-For-You AI System ($3,500 one-time)</option>
+            <option value="24/7 English & Spanish Lead Responder">24/7 English &amp; Spanish Lead Responder</option>
+            <option value="Automatic Invoice & Paperwork Entry">Automatic Invoice &amp; Paperwork Entry</option>
+            <option value="Private Company File & Handbook Assistant">Private Company File &amp; Handbook Assistant</option>
+            <option value="Executive AI Workshop ($1,500)">Executive AI Workshop ($1,500)</option>
             <option value="Dedicated Automation Partner ($2,500/mo)">Dedicated Automation Partner ($2,500/mo)</option>
           </select>
         </div>
 
         <div className="meska-field">
           <label htmlFor="contact-message" className="mb-1.5 block text-sm font-medium text-gray-200">
-            What manual workflow is slowing your team down?
+            What repetitive task is slowing your team down?
           </label>
           <textarea
             id="contact-message"
@@ -267,7 +269,7 @@ export function ContactForm() {
             rows={4}
             required
             minLength={10}
-            placeholder="Tell us your team size, tools (WhatsApp, Gmail/M365, QuickBooks, Slack, Google Drive), and the repetitive bottleneck you want automated..."
+            placeholder="Tell us your team size, the tools you use (WhatsApp, Gmail, Outlook, QuickBooks, Excel, Google Drive), and the repetitive task you want off your plate..."
             data-error="message-error"
             className="w-full rounded-lg border border-white/15 bg-gray-950/80 px-3.5 py-2.5 text-sm text-white placeholder-gray-500 outline-none transition focus:border-sky-400"
           />
@@ -280,12 +282,12 @@ export function ContactForm() {
           type="submit"
           className="w-full rounded-lg bg-sky-400 px-5 py-3 text-sm font-semibold text-gray-950 transition hover:bg-sky-300 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-sky-400"
         >
-          Book Your Free 15-Min Workflow Audit
+          Book Your Free 15-Min Live Demo
         </button>
 
         {submitted && (
           <p className="rounded-lg border border-sky-400/30 bg-sky-400/10 px-3.5 py-2.5 text-xs text-sky-200">
-            Your email client should open with a pre-filled draft to{' '}
+            Your email app should open with a pre-filled draft to{' '}
             <span className="font-semibold">hello@meskait.com</span>. If it didn&apos;t open,
             click &ldquo;Copy email&rdquo; above and send it directly.
           </p>
